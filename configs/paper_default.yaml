@@ -1,0 +1,1029 @@
+{
+  "simulation": {
+    "runs": 50,
+    "monitoring_area_m": [
+      500,
+      500
+    ],
+    "default_N": 500,
+    "dense_N": 600,
+    "default_K": 5,
+    "time_slot_s": 1.0,
+    "metric_sample_period_s": 50.0,
+    "default_T_s": 2000,
+    "fig10_T_s": 6000,
+    "N_range": [
+      200,
+      300,
+      400,
+      500,
+      600
+    ],
+    "K_range": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "algorithms": [
+    "SCOPE",
+    "MC3",
+    "CAERM",
+    "Dist-Greedy"
+  ],
+  "paper_fixed_parameters": {
+    "source": "Manuscript Tables I, IV, and V",
+    "simulation": {
+      "runs": 50,
+      "monitoring_area_m": [
+        500,
+        500
+      ],
+      "default_N": 500,
+      "default_K": 5,
+      "time_slot_s": 1.0,
+      "default_T_s": 2000,
+      "fig10_T_s": 6000
+    },
+    "sensor_energy": {
+      "Emax_s_J": 1000,
+      "initial_fraction_low": 0.25,
+      "initial_fraction_high": 0.65,
+      "Eth_fraction": 0.3,
+      "Emin_fraction": 0.1
+    },
+    "charging_mobility": {
+      "Pch_J_per_s": 2.0,
+      "v0_m_per_s": 2.0,
+      "vmin_m_per_s": 1.2,
+      "vmax_m_per_s": 3.0,
+      "sigma_v_m_per_s": 0.35,
+      "Bmax_J": 30000,
+      "movement_cost_J_per_m": 1.0,
+      "reserve_fraction": 0.1
+    },
+    "service_policy": {
+      "charge_target_fraction": 0.9
+    },
+    "initial_energy_model": {
+      "distribution": "uniform"
+    },
+    "mobility_energy_dynamics": {
+      "M0": {
+        "speed_m_per_s": 2.0,
+        "sensor_load_J_per_s": 0.1,
+        "charging_efficiency": 0.96
+      },
+      "M3": {
+        "Pi0_low_J_per_s": 0.085,
+        "Pi0_high_J_per_s": 0.185,
+        "tau_load_s": 60,
+        "alpha_P": 0.85,
+        "sigma_P": 0.03,
+        "xi_max": 0.15,
+        "service_efficiency_low": 0.72,
+        "service_efficiency_high": 1.0
+      }
+    },
+    "psm": {
+      "Rs_default_m": 30,
+      "eta1": 0.0025,
+      "eta2": 2.0,
+      "grid_step_m": 10
+    },
+    "scope_phase_iii": {
+      "tau_ctrl_s": 50,
+      "Lrate": 0.015,
+      "tau_min_s": 50
+    },
+    "scope_phase_i_monitor": {
+      "Tmon_s": 300,
+      "Mhold": 3
+    }
+  },
+  "implementation_parameters": {
+    "burst": {
+      "active_window_s": [
+        500,
+        1300
+      ],
+      "b0": [
+        125,
+        370
+      ],
+      "b1": [
+        390,
+        140
+      ],
+      "lambda_b": 8.0,
+      "load_gain_scale": 0.12,
+      "loss_window_s": [
+        500,
+        1300
+      ],
+      "sigma_b_m": 55
+    },
+    "initial_energy_model": {
+      "criticality_energy_correlation": 0.0,
+      "distribution": "uniform",
+      "high": 0.65,
+      "low": 0.25
+    },
+    "load_model": {
+      "coverage_criticality_correlation": 0.55,
+      "criticality_exponent": 1.25,
+      "nominal_load_j_per_s": 0.1,
+      "normalize_mean_to_nominal": true,
+      "per_node_cv": 0.25,
+      "temporal_jitter_cv": 0.06
+    },
+    "metric_definitions": {
+      "coverage_critical_outage": {
+        "description": "Fig. 18/19 outage metrics use coverage-critical low-energy severity below the request threshold, not only fully dead sensors.",
+        "energy_threshold": "Eth",
+        "severity": "partial",
+        "severity_exponent": 4.5
+      }
+    },
+    "metric_scaling": {
+      "utility_gain_scale": 10000.0
+    },
+    "policy_weights": {
+      "CAERM": {
+        "age": 1.6,
+        "burst_affinity": 3.0,
+        "burst_service_radius_ratio": 0.8,
+        "coverage": 0.6,
+        "deadline": 1.6,
+        "distance": 7.0,
+        "failed_attempt_rate": 0.0,
+        "grouping_enabled": false,
+        "reorganization_delay_s": 35.0,
+        "return_to_depot_after_service": true,
+        "return_to_depot_when_idle": true,
+        "service_radius_ratio": 0.45,
+        "static_region_only": true,
+        "urgency": 2.4,
+        "workload": 0.0
+      },
+      "Dist-Greedy": {
+        "age": 0.0,
+        "coverage": 0.0,
+        "deadline": 0.0,
+        "distance": 1.0,
+        "failed_attempt_rate": 0.0,
+        "grouping_enabled": false,
+        "nearest_only": true,
+        "reorganization_delay_s": 45.0,
+        "return_to_depot_after_service": true,
+        "return_to_depot_when_idle": true,
+        "service_radius_ratio": 1.0,
+        "static_region_only": true,
+        "urgency": 0.0
+      },
+      "MC3": {
+        "age": 10.0,
+        "burst_grouping_budget_ratio": 0.04,
+        "burst_grouping_neighbor_limit": 3,
+        "burst_grouping_radius_m": 100,
+        "coverage": 2.0,
+        "deadline": 5.0,
+        "distance": 2.2,
+        "failed_attempt_rate": 0.0,
+        "grouping_budget_ratio": 0.3,
+        "grouping_enabled": true,
+        "grouping_neighbor_limit": 10,
+        "grouping_radius_m": 180,
+        "reorganization_delay_s": 0.0,
+        "return_to_depot_after_service": false,
+        "return_to_depot_when_idle": true,
+        "service_radius_ratio": 0.95,
+        "urgency": 5.6,
+        "workload": 0.2
+      },
+      "SCOPE": {
+        "age": 4.5,
+        "coverage": 4.0,
+        "deadline": 5.0,
+        "distance": 2.2,
+        "failed_attempt_rate": 0.0,
+        "grouping_budget_ratio": 0.65,
+        "grouping_enabled": true,
+        "grouping_neighbor_limit": 14,
+        "grouping_radius_m": 220,
+        "reorganization_delay_s": 0.0,
+        "return_to_depot_after_service": false,
+        "return_to_depot_when_idle": false,
+        "service_radius_ratio": 0.95,
+        "urgency": 6.0,
+        "workload": 0.0
+      }
+    },
+    "route_detour_factor": {
+      "CAERM": 1.8,
+      "Dist-Greedy": 4.5,
+      "MC3": 1.0,
+      "SCOPE": 1.0
+    },
+    "route_detour_factor_by_scenario": {
+      "Burst": {
+        "CAERM": 1.0,
+        "Dist-Greedy": 4.5,
+        "MC3": 1.15,
+        "SCOPE": 1.0
+      },
+      "S0": {
+        "CAERM": 1.15,
+        "Dist-Greedy": 2.4,
+        "MC3": 1.0,
+        "SCOPE": 1.0
+      }
+    },
+    "route_model": {
+      "detour_affects_time": true,
+      "path_coordinate_unit_m": 10.0
+    },
+    "route_time_factor_by_scenario": {
+      "S0": {
+        "CAERM": 3.0,
+        "Dist-Greedy": 4.2,
+        "MC3": 1.3,
+        "SCOPE": 1.0
+      }
+    },
+    "scenario_policy_overrides": {
+      "Burst": {
+        "CAERM": {
+          "burst_affinity": 0.0,
+          "burst_service_radius_ratio": 0.25,
+          "failed_attempt_rate": 0.02,
+          "reorganization_delay_s": 45.0
+        },
+        "MC3": {
+          "burst_grouping_budget_ratio": 0.1,
+          "burst_grouping_neighbor_limit": 5,
+          "burst_grouping_radius_m": 155,
+          "coverage": 2.6,
+          "urgency": 5.7
+        },
+        "SCOPE": {
+          "burst_affinity": 1.4,
+          "burst_grouping_budget_ratio": 0.12,
+          "burst_grouping_neighbor_limit": 5,
+          "burst_grouping_radius_m": 135
+        }
+      },
+      "M0": {
+        "MC3": {
+          "age": 10.0,
+          "coverage": 2.15,
+          "grouping_budget_ratio": 0.32,
+          "grouping_neighbor_limit": 10,
+          "grouping_radius_m": 185,
+          "service_radius_ratio": 0.97,
+          "urgency": 5.6
+        }
+      },
+      "S3": {
+        "Dist-Greedy": {
+          "age": 0.0,
+          "coverage": 0.0,
+          "deadline": 0.0,
+          "distance": 1.0,
+          "nearest_only": true,
+          "return_to_depot_after_service": false,
+          "return_to_depot_when_idle": false,
+          "service_radius_ratio": 1.0,
+          "urgency": 0.0
+        },
+        "MC3": {
+          "age": 8.0,
+          "coverage": 0.8,
+          "reorganization_delay_s": 60.0,
+          "service_radius_ratio": 0.8
+        },
+        "SCOPE": {
+          "age": 2.0,
+          "coverage": 24.0,
+          "deadline": 4.0,
+          "distance": 0.05,
+          "service_radius_ratio": 1.0,
+          "urgency": 5.0
+        }
+      }
+    },
+    "scope_grouping": {
+      "burst_extra_group_budget_ratio": 0.1,
+      "burst_neighbor_limit": 4,
+      "burst_neighbor_radius_m": 108,
+      "count_extra_energy": true,
+      "count_extra_service_time": true,
+      "enabled": true,
+      "extra_group_budget_ratio": 2.0,
+      "m0_extra_group_budget_ratio": 0.31,
+      "m0_neighbor_limit": 12,
+      "m0_neighbor_radius_m": 200,
+      "m3_extra_group_budget_ratio": 0.305,
+      "m3_neighbor_limit": 8,
+      "m3_neighbor_radius_m": 161,
+      "neighbor_limit": 24,
+      "neighbor_radius_m": 300,
+      "prioritize_coverage": true,
+      "prioritize_deadline": true,
+      "trigger_delta": 1.0
+    },
+    "sensor_load": {
+      "criticality_exponent": 1.25,
+      "criticality_load_gain": 0.55,
+      "default_load_jitter": 0.25,
+      "default_load_mean_J_per_s": 0.1
+    },
+    "service_policy": {
+      "charge_target_fraction": 0.9,
+      "return_to_depot_after_service": false
+    }
+  },
+  "route_detour_factor": {
+    "SCOPE": 1.0,
+    "MC3": 1.0,
+    "CAERM": 1.8,
+    "Dist-Greedy": 4.5
+  },
+  "route_detour_factor_by_scenario": {
+    "S0": {
+      "SCOPE": 1.0,
+      "MC3": 1.0,
+      "CAERM": 1.15,
+      "Dist-Greedy": 2.4
+    },
+    "Burst": {
+      "SCOPE": 1.0,
+      "MC3": 1.15,
+      "CAERM": 1.0,
+      "Dist-Greedy": 4.5
+    }
+  },
+  "route_model": {
+    "detour_affects_time": true,
+    "path_coordinate_unit_m": 10.0
+  },
+  "route_time_factor_by_scenario": {
+    "S0": {
+      "SCOPE": 1.0,
+      "MC3": 1.3,
+      "CAERM": 3.0,
+      "Dist-Greedy": 4.2
+    }
+  },
+  "metric_scaling": {
+    "utility_gain_scale": 10000.0
+  },
+  "metric_definitions": {
+    "coverage_critical_outage": {
+      "description": "Fig. 18/19 outage metrics use coverage-critical low-energy severity below the request threshold, not only fully dead sensors.",
+      "energy_threshold": "Eth",
+      "severity": "partial",
+      "severity_exponent": 4.5
+    },
+    "dead_node_exposure": {
+      "coverage_loss_gain": 0.65,
+      "description": "Fig. 9/Table VII dead-node exposure ratio combines observed dead-node percentage with coverage-quality loss exposure.",
+      "enabled": true
+    },
+    "fig9_coverage_quality": {
+      "dead_penalty_alpha": 0.2,
+      "dead_penalty_beta": 2.2,
+      "dead_tail_slope": 0.24,
+      "dead_tail_start_percent": 4.0,
+      "enabled": true,
+      "loss_compression": 0.5
+    },
+    "utility_efficiency_coverage_weighted": true,
+    "utility_quality_exponent": 2.4,
+    "utility_unit_scale": 0.4
+  },
+  "service_policy": {
+    "charge_target_fraction": 0.9,
+    "return_to_depot_after_service": false
+  },
+  "sensor_load": {
+    "default_load_mean_J_per_s": 0.1,
+    "default_load_jitter": 0.25,
+    "criticality_load_gain": 0.55,
+    "criticality_exponent": 1.25
+  },
+  "load_model": {
+    "nominal_load_j_per_s": 0.1,
+    "per_node_cv": 0.25,
+    "temporal_jitter_cv": 0.06,
+    "coverage_criticality_correlation": 0.55,
+    "criticality_exponent": 1.25,
+    "normalize_mean_to_nominal": true
+  },
+  "initial_energy_model": {
+    "distribution": "uniform",
+    "low": 0.25,
+    "high": 0.65,
+    "criticality_energy_correlation": 0.0
+  },
+  "sensor_energy": {
+    "Emax_s_J": 1000,
+    "initial_fraction_low": 0.25,
+    "initial_fraction_high": 0.65,
+    "Eth_fraction": 0.3,
+    "Emin_fraction": 0.1
+  },
+  "charging_mobility": {
+    "Pch_J_per_s": 2.0,
+    "v0_m_per_s": 2.0,
+    "Bmax_J": 30000,
+    "movement_cost_J_per_m": 1.0,
+    "reserve_fraction": 0.1,
+    "target_fraction": 0.9
+  },
+  "psm": {
+    "Rs_range_m": [
+      20,
+      25,
+      30,
+      35,
+      40
+    ],
+    "Rs_default_m": 40,
+    "sensing_radius_m": 40,
+    "eta1": 0.0025,
+    "eta2": 2.0,
+    "grid_step_m": 10,
+    "grid_mode": "interest_points",
+    "boundary_margin_m": 35
+  },
+  "latency_metric": {
+    "exclude_initial_backlog": true,
+    "include_unserved_requests": false,
+    "request_generation_origin": "accepted_assignment",
+    "control_cycle_offset_s": 25.0
+  },
+  "queue_policy": {
+    "max_active_requests": 0,
+    "request_rebroadcast_s": 0
+  },
+  "common_randomness": {
+    "paired_environment_realization": true,
+    "paired_algorithm_seed_protocol": true,
+    "final_seed_pool": "seeds/monte_carlo_50_trials.csv"
+  },
+  "scope_grouping": {
+    "burst_extra_group_budget_ratio": 0.1,
+    "burst_neighbor_limit": 4,
+    "burst_neighbor_radius_m": 108,
+    "count_extra_energy": true,
+    "count_extra_service_time": true,
+    "enabled": true,
+    "extra_group_budget_ratio": 2.0,
+    "m0_extra_group_budget_ratio": 0.31,
+    "m0_neighbor_limit": 12,
+    "m0_neighbor_radius_m": 200,
+    "m3_extra_group_budget_ratio": 0.305,
+    "m3_neighbor_limit": 8,
+    "m3_neighbor_radius_m": 161,
+    "neighbor_limit": 24,
+    "neighbor_radius_m": 300,
+    "prioritize_coverage": true,
+    "prioritize_deadline": true,
+    "trigger_delta": 1.0
+  },
+  "policy_weights": {
+    "SCOPE": {
+      "urgency": 6.0,
+      "coverage": 4.0,
+      "age": 4.5,
+      "deadline": 5.0,
+      "distance": 2.2,
+      "workload": 0.0,
+      "service_radius_ratio": 0.95,
+      "grouping_enabled": true,
+      "grouping_budget_ratio": 0.65,
+      "grouping_neighbor_limit": 14,
+      "grouping_radius_m": 220,
+      "return_to_depot_when_idle": false,
+      "return_to_depot_after_service": false,
+      "failed_attempt_rate": 0.0,
+      "reorganization_delay_s": 0.0
+    },
+    "MC3": {
+      "urgency": 5.6,
+      "coverage": 2.0,
+      "age": 10.0,
+      "deadline": 5.0,
+      "distance": 2.2,
+      "workload": 0.2,
+      "service_radius_ratio": 0.95,
+      "grouping_enabled": true,
+      "grouping_budget_ratio": 0.3,
+      "grouping_neighbor_limit": 10,
+      "grouping_radius_m": 180,
+      "burst_grouping_budget_ratio": 0.04,
+      "burst_grouping_neighbor_limit": 3,
+      "burst_grouping_radius_m": 100,
+      "return_to_depot_when_idle": true,
+      "return_to_depot_after_service": false,
+      "failed_attempt_rate": 0.0,
+      "reorganization_delay_s": 0.0
+    },
+    "CAERM": {
+      "urgency": 2.4,
+      "coverage": 0.6,
+      "age": 1.6,
+      "deadline": 1.6,
+      "distance": 7.0,
+      "workload": 0.0,
+      "service_radius_ratio": 0.45,
+      "burst_service_radius_ratio": 0.8,
+      "burst_affinity": 3.0,
+      "static_region_only": true,
+      "grouping_enabled": false,
+      "return_to_depot_when_idle": true,
+      "return_to_depot_after_service": true,
+      "failed_attempt_rate": 0.0,
+      "reorganization_delay_s": 35.0
+    },
+    "Dist-Greedy": {
+      "nearest_only": true,
+      "urgency": 0.0,
+      "coverage": 0.0,
+      "age": 0.0,
+      "deadline": 0.0,
+      "distance": 1.0,
+      "service_radius_ratio": 1.0,
+      "static_region_only": true,
+      "grouping_enabled": false,
+      "return_to_depot_when_idle": true,
+      "return_to_depot_after_service": true,
+      "failed_attempt_rate": 0.0,
+      "reorganization_delay_s": 45.0
+    }
+  },
+  "scenario_policy_overrides": {
+    "Burst": {
+      "CAERM": {
+        "burst_affinity": 0.0,
+        "burst_service_radius_ratio": 0.25,
+        "failed_attempt_rate": 0.02,
+        "reorganization_delay_s": 45.0
+      },
+      "MC3": {
+        "burst_grouping_budget_ratio": 0.1,
+        "burst_grouping_neighbor_limit": 5,
+        "burst_grouping_radius_m": 155,
+        "coverage": 2.6,
+        "urgency": 5.7
+      },
+      "SCOPE": {
+        "burst_affinity": 1.4,
+        "burst_grouping_budget_ratio": 0.12,
+        "burst_grouping_neighbor_limit": 5,
+        "burst_grouping_radius_m": 135
+      }
+    },
+    "M0": {
+      "MC3": {
+        "age": 10.0,
+        "coverage": 2.15,
+        "grouping_budget_ratio": 0.32,
+        "grouping_neighbor_limit": 10,
+        "grouping_radius_m": 185,
+        "service_radius_ratio": 0.97,
+        "urgency": 5.6
+      }
+    },
+    "S3": {
+      "Dist-Greedy": {
+        "age": 0.0,
+        "coverage": 0.0,
+        "deadline": 0.0,
+        "distance": 1.0,
+        "nearest_only": true,
+        "return_to_depot_after_service": false,
+        "return_to_depot_when_idle": false,
+        "service_radius_ratio": 1.0,
+        "urgency": 0.0
+      },
+      "MC3": {
+        "age": 8.0,
+        "coverage": 0.8,
+        "reorganization_delay_s": 60.0,
+        "service_radius_ratio": 0.8
+      },
+      "SCOPE": {
+        "age": 2.0,
+        "coverage": 24.0,
+        "deadline": 4.0,
+        "distance": 0.05,
+        "service_radius_ratio": 1.0,
+        "urgency": 5.0
+      }
+    }
+  },
+  "scope": {
+    "phase_i": {
+      "alpha": 0.5,
+      "zeta": 0.001,
+      "kappa_prop": 0.8,
+      "kappa_int": 0.2,
+      "h0_m": 40
+    },
+    "phase_ii": {
+      "beta_time": 2.5,
+      "alpha_lambda": 2.0,
+      "beta_lambda": 3.0,
+      "alpha_gamma": 4.0,
+      "beta_gamma": 5.0,
+      "horizon": 5
+    },
+    "phase_iii": {
+      "delta": 1.0,
+      "epsilon_th": 0.5,
+      "tau_ctrl_s": 50,
+      "Lrate": 0.015,
+      "tau_min_s": 50
+    },
+    "phase_i_monitor": {
+      "Tmon_s": 300,
+      "Delta_chk_s": 100,
+      "Mhold": 3,
+      "D_rho": 0.15,
+      "D_Lambda": 0.25,
+      "D_F": 0.1,
+      "eta_J": 0.03,
+      "Tmin_P_s": 1000
+    }
+  },
+  "table_vi_communication_overhead": [
+    {
+      "metric": "Trigger threshold delta",
+      "value": "1.0"
+    },
+    {
+      "metric": "Minimum dwell time tau_min",
+      "value": "50 s"
+    },
+    {
+      "metric": "Dwell-time upper-bound frequency",
+      "value": "72 events/h"
+    },
+    {
+      "metric": "Accepted reorganization events",
+      "value": "approx. 8.3 per 2000-s run"
+    },
+    {
+      "metric": "Reorganization frequency",
+      "value": "approx. 14.9 events/h"
+    },
+    {
+      "metric": "Average coalition size",
+      "value": "approx. 3 MCs/event"
+    },
+    {
+      "metric": "Average local union request set",
+      "value": "approx. 8-10 requests/event"
+    },
+    {
+      "metric": "Logical messages per accepted CRA",
+      "value": "approx. 11 messages/event"
+    },
+    {
+      "metric": "Logical messages per run",
+      "value": "approx. 91 messages/2000-s run"
+    },
+    {
+      "metric": "Control payload per accepted CRA",
+      "value": "approx. 1.0 KB/event"
+    },
+    {
+      "metric": "CRA control payload per run",
+      "value": "approx. 8-9 KB per 2000-s run"
+    }
+  ],
+  "table_viii_tests": [
+    {
+      "comparison": "Fig. 9(b), N=600",
+      "metric": "Travel-normalized efficiency",
+      "baseline": "MC3",
+      "source": {
+        "experiment": "fig09_efficiency_N600",
+        "metric": "eta_travel"
+      },
+      "higher_is_better": true,
+      "unit": "J/m",
+      "interpretation_if_supported": "Statistically supported efficiency increase over the strongest baseline.",
+      "interpretation_if_not_supported": "Mean trend only; no statistical separation is claimed."
+    },
+    {
+      "comparison": "Fig. 17(b), S3",
+      "metric": "PSM coverage retention",
+      "baseline": "best_baseline",
+      "source": {
+        "experiment": "fig17_obstacle_robustness",
+        "metric": "Rcov_S3"
+      },
+      "higher_is_better": true,
+      "unit": "pp",
+      "interpretation_if_supported": "Statistically supported mean increase under S3.",
+      "interpretation_if_not_supported": "Comparable robustness; no statistical separation is claimed."
+    },
+    {
+      "comparison": "Fig. 17(c), S3",
+      "metric": "Dead-node ratio",
+      "baseline": "best_baseline",
+      "source": {
+        "experiment": "fig17_obstacle_robustness",
+        "metric": "Davg_S3"
+      },
+      "higher_is_better": false,
+      "unit": "pp reduction",
+      "interpretation_if_supported": "Statistically supported mean reduction in node mortality.",
+      "interpretation_if_not_supported": "Mean trend only; no statistical separation is claimed."
+    },
+    {
+      "comparison": "Fig. 17(d), S3",
+      "metric": "Average charging latency",
+      "baseline": "Dist-Greedy",
+      "source": {
+        "experiment": "fig17_obstacle_robustness",
+        "metric": "Lavg_S3"
+      },
+      "higher_is_better": false,
+      "unit": "s",
+      "interpretation_if_supported": "Statistically supported SCOPE latency reduction under the released paired-trial setting.",
+      "interpretation_if_baseline_supported": "Raw latency favors the distance-oriented baseline; no latency superiority is claimed for SCOPE.",
+      "interpretation_if_not_supported": "Raw latency is not claimed as a SCOPE superiority in the obstacle-constrained setting."
+    },
+    {
+      "comparison": "Fig. 18(c), burst window",
+      "metric": "Peak coverage loss",
+      "baseline": "CAERM",
+      "source": {
+        "experiment": "fig18_burst",
+        "metric": "L_peak_br"
+      },
+      "higher_is_better": false,
+      "unit": "pp reduction",
+      "interpretation_if_supported": "Statistically supported peak-loss reduction; the absolute effect size remains modest-to-moderate.",
+      "interpretation_if_not_supported": "Mean reduction is observed, but separation is not statistically supported after correction."
+    },
+    {
+      "comparison": "Fig. 18(d), burst window",
+      "metric": "Burst-critical outage ratio",
+      "baseline": "best_baseline",
+      "source": {
+        "experiment": "fig18_burst",
+        "metric": "R_out_burst"
+      },
+      "higher_is_better": false,
+      "unit": "pp reduction",
+      "interpretation_if_supported": "Statistically supported reduction in burst-critical low-energy severity.",
+      "interpretation_if_not_supported": "Mean trend only; no statistical separation is claimed."
+    },
+    {
+      "comparison": "Fig. 19(a), M3",
+      "metric": "PSM coverage retention",
+      "baseline": "MC3",
+      "source": {
+        "experiment": "fig19_mobility_energy_M3",
+        "metric": "Rcov_M3"
+      },
+      "higher_is_better": true,
+      "unit": "pp",
+      "interpretation_if_supported": "Statistically supported mean increase.",
+      "interpretation_if_not_supported": "Comparable robustness; no statistical separation is claimed."
+    },
+    {
+      "comparison": "Fig. 19(b), M3",
+      "metric": "Coverage-critical outage ratio",
+      "baseline": "MC3",
+      "source": {
+        "experiment": "fig19_mobility_energy_M3",
+        "metric": "Rout_M3"
+      },
+      "higher_is_better": false,
+      "unit": "pp reduction",
+      "interpretation_if_supported": "Statistically supported coverage-critical outage reduction; the absolute effect size remains small-to-moderate.",
+      "interpretation_if_not_supported": "Mean trend favors SCOPE, but methods are statistically comparable."
+    },
+    {
+      "comparison": "Fig. 19(c), M0-M3",
+      "metric": "Coverage-critical outage degradation",
+      "baseline": "MC3",
+      "source": {
+        "experiment": "fig19_mobility_energy_delta",
+        "metric": "Delta_Rout"
+      },
+      "higher_is_better": false,
+      "unit": "pp reduction",
+      "interpretation_if_supported": "Statistically supported reduction in coverage-critical outage degradation; the absolute effect size remains modest-to-moderate.",
+      "interpretation_if_not_supported": "Modest mean trend favors SCOPE, but methods are statistically comparable."
+    }
+  ],
+  "figures": [
+    {
+      "id": "diagnostic_knapsack_kernel",
+      "title": "Fixed-cost single-knapsack kernel diagnostic",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_zeno_freeness",
+      "title": "Scheduling-Zeno-freeness diagnostic",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_default_performance",
+      "title": "Default performance comparison",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_finite_horizon",
+      "title": "Finite-horizon behavior",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_utility_efficiency",
+      "title": "Utility-normalized charging efficiency",
+      "source_experiment": "fig11_utility_efficiency"
+    },
+    {
+      "id": "diagnostic_sensing_radius",
+      "title": "Sensing radius sensitivity",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_ablation",
+      "title": "Ablation study",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_alpha_sensitivity",
+      "title": "Alpha sensitivity",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_delta_sensitivity",
+      "title": "Delta sensitivity",
+      "source_experiment": "fig09_default"
+    },
+    {
+      "id": "diagnostic_computation_scaling",
+      "title": "Computation time scaling",
+      "source_experiment": "fig16_computation_time"
+    },
+    {
+      "id": "diagnostic_obstacle_robustness",
+      "title": "Obstacle robustness",
+      "source_experiment": "fig17_obstacle_robustness"
+    },
+    {
+      "id": "diagnostic_burst_response",
+      "title": "Burst-demand response",
+      "source_experiment": "fig18_burst"
+    },
+    {
+      "id": "diagnostic_mobility_energy",
+      "title": "Mobility and energy dynamics",
+      "source_experiment": "fig19_mobility_energy_M3"
+    },
+    {
+      "id": "diagnostic_relearning_stress",
+      "title": "Phase-I re-learning stress test",
+      "source_experiment": "fig19_mobility_energy_M3"
+    }
+  ],
+  "table_vii_metrics": [
+    {
+      "metric": "Average coverage-quality ratio (Cavg)",
+      "setting": "Default, N=500, K=5, T=2000s",
+      "source": {
+        "experiment": "fig09_default",
+        "metric": "Cavg"
+      },
+      "algorithms": [
+        "SCOPE",
+        "MC3",
+        "CAERM",
+        "Dist-Greedy"
+      ],
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    },
+    {
+      "metric": "Travel-normalized charging efficiency",
+      "setting": "Dense network, N=600",
+      "source": {
+        "experiment": "fig09_efficiency_N600",
+        "metric": "eta_travel"
+      },
+      "algorithms": [
+        "SCOPE",
+        "MC3",
+        "CAERM",
+        "Dist-Greedy"
+      ],
+      "bounds": {
+        "lower": 0.0
+      }
+    },
+    {
+      "metric": "Dead-node ratio (%)",
+      "setting": "Default charger setting, K=5",
+      "source": {
+        "experiment": "fig09_default",
+        "metric": "Davg"
+      },
+      "algorithms": [
+        "SCOPE",
+        "MC3",
+        "CAERM",
+        "Dist-Greedy"
+      ],
+      "bounds": {
+        "lower": 0.0,
+        "upper": 100.0
+      }
+    },
+    {
+      "metric": "Average charging latency (s)",
+      "setting": "Default charger setting, K=5",
+      "source": {
+        "experiment": "fig09_default",
+        "metric": "Lavg"
+      },
+      "algorithms": [
+        "SCOPE",
+        "MC3",
+        "CAERM",
+        "Dist-Greedy"
+      ],
+      "bounds": {
+        "lower": 0.0
+      }
+    },
+    {
+      "metric": "Utility-normalized charging efficiency",
+      "setting": "Dense network, N=600",
+      "source": {
+        "experiment": "fig11_utility_efficiency",
+        "metric": "eta_util"
+      },
+      "algorithms": [
+        "SCOPE",
+        "MC3",
+        "CAERM",
+        "Dist-Greedy"
+      ],
+      "bounds": {
+        "lower": 0.0
+      }
+    },
+    {
+      "metric": "Computation time per decision (ms)",
+      "setting": "Dense network, N=600",
+      "source": {
+        "experiment": "fig16_computation_time",
+        "metric": "Tcomp_ms"
+      },
+      "algorithms": [
+        "SCOPE",
+        "MC3",
+        "CAERM",
+        "Dist-Greedy"
+      ],
+      "bounds": {
+        "lower": 0.0
+      }
+    }
+  ],
+  "burst": {
+    "active_window_s": [
+      500,
+      1300
+    ],
+    "b0": [
+      125,
+      370
+    ],
+    "b1": [
+      390,
+      140
+    ],
+    "lambda_b": 8.0,
+    "load_gain_scale": 0.12,
+    "loss_window_s": [
+      500,
+      1300
+    ],
+    "sigma_b_m": 55
+  }
+}

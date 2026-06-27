@@ -1,0 +1,6 @@
+{
+  "SCOPE": {"coverage_priority": 1.0, "travel_penalty": 0.42, "cooperation": 1.0},
+  "MC3": {"coverage_priority": 0.82, "travel_penalty": 0.56, "cooperation": 0.85},
+  "CAERM": {"coverage_priority": 0.74, "travel_penalty": 0.62, "cooperation": 0.58},
+  "Dist-Greedy": {"coverage_priority": 0.48, "travel_penalty": 0.21, "cooperation": 0.15}
+}

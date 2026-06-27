@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "SCOPE WRSN Reproducibility Package"
+message: "If you use this reproducibility package, please cite the associated IEEE Sensors Journal manuscript."
+type: software
+authors:
+  - family-names: Xu
+    given-names: Pei
+  - family-names: Han
+    given-names: Shilong
+  - family-names: Wu
+    given-names: Zijun
+  - family-names: Chang
+    given-names: Chih-Yung
+  - family-names: Roy
+    given-names: Diptendu Sinha
+date-released: 2026-06-24
+license: MIT

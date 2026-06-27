@@ -1,0 +1,5 @@
+{
+  "format": ["png", "pdf"],
+  "style": "minimal data-backed line plots",
+  "note": "The standard-library renderer is intentionally simple so the package can run before optional plotting dependencies are installed."
+}

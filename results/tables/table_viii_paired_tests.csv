@@ -1,0 +1,10 @@
+comparison,metric,baseline,paired_difference,ci_low,ci_high,unit,test,p_adj,dz,interpretation
+"Fig. 9(b), N=600",Travel-normalized efficiency,MC3,0.150838587685,0.0766509246956,0.225026250675,J/m,Wilcoxon,0.002,0.577829931874,Statistically supported efficiency increase over the strongest baseline.
+"Fig. 17(b), S3",PSM coverage retention,MC3,0.76901709256,0.682695606399,0.855338578721,pp,Wilcoxon,< 0.001,2.5318405528,Statistically supported mean increase under S3.
+"Fig. 17(c), S3",Dead-node ratio,MC3,0.727121951219,0.607156904348,0.847086998091,pp reduction,Wilcoxon,< 0.001,1.7225498361,Statistically supported mean reduction in node mortality.
+"Fig. 17(d), S3",Average charging latency,Dist-Greedy,-97.9557618142,-114.197958955,-81.7135646733,s,Wilcoxon,< 0.001,-1.71397497563,Raw latency favors the distance-oriented baseline; no latency superiority is claimed for SCOPE.
+"Fig. 18(c), burst window",Peak coverage loss,CAERM,0.57969556937,0.267075237834,0.892315900906,pp reduction,Wilcoxon,0.004,0.526989581689,Statistically supported peak-loss reduction; the absolute effect size remains modest-to-moderate.
+"Fig. 18(d), burst window",Burst-critical outage ratio,MC3,0.361941168064,0.254702554413,0.469179781715,pp reduction,Wilcoxon,< 0.001,0.959193132037,Statistically supported reduction in burst-critical low-energy severity.
+"Fig. 19(a), M3",PSM coverage retention,MC3,0.048077797924,-0.0130213027625,0.109176898611,pp,Wilcoxon,0.297,0.22362946128,Comparable robustness; no statistical separation is claimed.
+"Fig. 19(b), M3",Coverage-critical outage ratio,MC3,0.0784933109726,0.0316659771699,0.125320644775,pp reduction,Wilcoxon,0.004,0.476378864971,Statistically supported coverage-critical outage reduction; the absolute effect size remains small-to-moderate.
+"Fig. 19(c), M0-M3",Coverage-critical outage degradation,MC3,0.152548125126,0.0894472169405,0.215649033312,pp reduction,Wilcoxon,< 0.001,0.687053461862,Statistically supported reduction in coverage-critical outage degradation; the absolute effect size remains modest-to-moderate.

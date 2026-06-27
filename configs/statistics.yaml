@@ -1,0 +1,7 @@
+{
+  "monte_carlo_runs": 50,
+  "confidence_interval": "mean +/- t0.975,49 * s / sqrt(50)",
+  "paired_test": "Wilcoxon signed-rank",
+  "multiple_testing": "Holm correction",
+  "effect_size": "paired dz = mean(diff) / std(diff)"
+}

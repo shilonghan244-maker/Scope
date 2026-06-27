@@ -1,0 +1,25 @@
+{
+  "S0": {"description": "Uniform deployment without obstacles"},
+  "S1": {"description": "Gaussian-mixture deployment", "cluster_fraction": 0.70, "sigma_c_m": 35, "min_center_distance_m": 80},
+  "S2": {"description": "S1 plus fixed rectangular obstacles"},
+  "S3": {"description": "S2 plus restricted 10-m buffer zones", "buffer_m": 10},
+  "Burst": {"b0": [125, 370], "b1": [390, 140], "active_window_s": [500, 1100], "lambda_b": 8.0, "sigma_b_m": 115},
+  "M0": {"description": "constant speed, homogeneous load, fixed charging efficiency"},
+  "M1": {"description": "variable trip speed plus nonlinear movement power"},
+  "M2": {"description": "M1 plus heterogeneous higher-average sensor loads with bounded temporal variation"},
+  "M3": {"description": "M2 plus time-varying charging efficiency", "eta_range": [0.72, 1.0]},
+  "B1": {"description": "regional consumption shift"},
+  "B2": {"description": "sensor re-deployment into a new spatial cluster"},
+  "B3": {"description": "large-scale permanent sensor failures"},
+  "obstacles": {
+    "O1": {"x": [90, 130], "y": [350, 425]},
+    "O2": {"x": [170, 190], "y": [220, 275]},
+    "O3": {"x": [205, 245], "y": [130, 215]},
+    "O4": {"x": [285, 325], "y": [370, 465]},
+    "O5": {"x": [325, 400], "y": [360, 390]},
+    "O6": {"x": [390, 455], "y": [255, 285]},
+    "O7": {"x": [430, 465], "y": [285, 330]},
+    "O8": {"x": [335, 380], "y": [135, 170]},
+    "O9": {"x": [420, 445], "y": [30, 85]}
+  }
+}

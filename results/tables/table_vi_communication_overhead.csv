@@ -1,0 +1,12 @@
+metric,value
+Trigger threshold delta,1.0
+Minimum dwell time tau_min,50 s
+Dwell-time upper-bound frequency,72 events/h
+Accepted reorganization events,approx. 8.3 per 2000-s run
+Reorganization frequency,approx. 14.9 events/h
+Average coalition size,approx. 3 MCs/event
+Average local union request set,approx. 8-10 requests/event
+Logical messages per accepted CRA,approx. 11 messages/event
+Logical messages per run,approx. 91 messages/2000-s run
+Control payload per accepted CRA,approx. 1.0 KB/event
+CRA control payload per run,approx. 8-9 KB per 2000-s run
